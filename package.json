@@ -1,0 +1,23 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "Employee information database with dept, manager and salary info.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barkleylikecharles/employee-tracker.git"
+  },
+  "author": "Nicole Barkley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barkleylikecharles/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/barkleylikecharles/employee-tracker#readme",
+  "dependencies": {
+    "mysql2": "^2.3.3"
+  }
+}
