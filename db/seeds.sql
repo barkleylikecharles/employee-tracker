@@ -8,7 +8,7 @@ VALUES ("sales"),
 
 SELECT * FROM department;
 
-INSERT INTO role (title, salary, department_id),
+INSERT INTO role (title, salary, dept_id),
 VALUES ("software engineer", 110000, 4),
     ("accounting manager", 100000, 2),
     ("engineering manager", 200000, 4),

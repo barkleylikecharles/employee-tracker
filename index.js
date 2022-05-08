@@ -19,6 +19,7 @@ connection.connect(function(err){
 function mainMenu() {
     inquirer
         .prompt({
+            name: 'menuStart',
             type: 'list',
             message: 'Welcome to the employee database. How would you like to start?',
             choices: [
@@ -32,7 +33,19 @@ function mainMenu() {
                 // "Delete Employee",
                 "EXIT"
             ]
-                
-    
+        }).then(function (answer){
+            switch (answer.menuStart) {
+                case 'View All Employees':
+                viewEmployees();
+            }
         })
+};
+
+function viewEmployees() {
+    var query = 'SELECT * FROM employee';
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+        console.log(employee.length + 'employees available to view.');
+        mainMenu();
+    })
 }
