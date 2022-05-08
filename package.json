@@ -2,10 +2,10 @@
   "name": "employee-tracker",
   "version": "1.0.0",
   "description": "Employee information database with dept, manager and salary info.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "node server.js",
-    "start": "node server.js"
+    "test": "node index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/barkleylikecharles/employee-tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
     "mysql2": "^2.3.3"
-  }
+  },
+  "keywords": []
 }
