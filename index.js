@@ -136,3 +136,26 @@ function addEmployee() {
                 });
             });
 }
+
+function addDepartment() {
+    query = `SELECT department_name AS "Departments" FROM department`;
+    connection.query (query, function (err, res) {
+        if (err) {
+            throw err;
+        }
+        console.log('');
+        console.table('Current Departments', results);
+
+    inquirer    
+        .prompt ([
+           { 
+            type: "input",
+            message: "What department are you adding?",
+            name: "newDept",   
+           }
+        ]).then(function (answer) {
+            connection.query(`INSERT INTO department(department_name) VALUES ( ? )`, answer.newDept)
+            mainMenu();
+        })
+    })
+    }
