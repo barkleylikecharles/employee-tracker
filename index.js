@@ -60,28 +60,28 @@ function mainMenu() {
 //See all employees in database
 function viewEmployees() {
     var query = `SELECT * FROM employee`;
-    connection.query(query, function(err, res) {
+    connection.query(query, function(err, answer) {
         if (err) throw err;
-        console.log(res.length + ' employees available to view.');
-        console.table('All Employees:', res);
+        console.log(answer.length + ' employees available to view.');
+        console.table('All Employees:', answer);
         mainMenu();
     })
 };
 //All departments in database
 function viewDepartment() {
     var query = `SELECT * FROM department`;
-    connection.query(query, function(err, res) {
+    connection.query(query, function(err, answer) {
         if (err) throw err;
-        console.table('All Departments:', res);
+        console.table('All Departments:', answer);
         mainMenu();
     })
 };
 //All roles in database
 function viewRoles() {
     var query = `SELECT * FROM role`;
-    connection.query(query, function(err, res) {
+    connection.query(query, function(err, answer) {
         if (err) throw err;
-        console.table('All Roles:', res);
+        console.table('All Roles:', answer);
         mainMenu();
     })
 };
@@ -120,11 +120,11 @@ function addEmployee() {
             name: "addMgr"      
             }
         ])
-        .then(function (res) {
-            const firstName = res.firstName;
-            const lastName = res.lastName;
-            const addRoleId = res.addRole;
-            const addMgrId = res.addMgr; 
+        .then(function (answer) {
+            const firstName = answer.firstName;
+            const lastName = answer.lastName;
+            const addRoleId = answer.addRole;
+            const addMgrId = answer.addMgr; 
             const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)  
                 VALUES ("${firstName}, ${lastName}, ${addRoleId}, ${addMgrId}")`;
             connection.query(query, function (err, res) {
