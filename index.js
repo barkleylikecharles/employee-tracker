@@ -125,6 +125,14 @@ function addEmployee() {
             const lastName = res.lastName;
             const addRoleId = res.addRole;
             const addMgrId = res.addMgr; 
-            const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)`
-        })
+            const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)  
+                VALUES ("${firstName}, ${lastName}, ${addRoleId}, ${addMgrId}")`;
+            connection.query(query, function (err, res) {
+                if (err) {
+                    throw err;
+                }
+                console.table(res);
+                mainMenu();
+                });
+            });
 }

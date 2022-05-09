@@ -18,7 +18,7 @@ VALUES ("software engineer", 110000, 4),
     ("general counsel", 210000, 3),
     ("associate attorney", 150000, 3);
 
-SELECT * FROM role
+SELECT * FROM role;
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Verona", "Nelson", 4, 2),
