@@ -1,5 +1,5 @@
 CREATE DATABASE employee_DB;
-use employee_DB;
+USE employee_DB;
 
 CREATE TABLE department (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,

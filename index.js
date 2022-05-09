@@ -15,7 +15,7 @@ connection.connect(function(err){
     if (err) throw err;
     mainMenu();
 })
-
+//Start the application with a list of options
 function mainMenu() {
     inquirer
         .prompt({
@@ -46,11 +46,15 @@ function mainMenu() {
                 case "View All Roles":
                     viewRoles();
                     break;
+
+                case "Add Employee":
+                    addEmployee();
+                    break;
             }
         })
 };
 
-
+//See all employees in database
 function viewEmployees() {
     var query = 'SELECT * FROM employee';
     connection.query(query, function(err, res) {
@@ -60,7 +64,7 @@ function viewEmployees() {
         mainMenu();
     })
 };
-
+//All departments in database
 function viewDepartment() {
     var query = 'SELECT * FROM department';
     connection.query(query, function(err, res) {
@@ -69,7 +73,7 @@ function viewDepartment() {
         mainMenu();
     })
 };
-
+//All roles in database
 function viewRoles() {
     var query = 'SELECT * FROM role';
     connection.query(query, function(err, res) {
@@ -78,3 +82,39 @@ function viewRoles() {
         mainMenu();
     })
 };
+
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+            type: "input",
+            message: "What is the employee's first name?",
+            name: "firstName",
+               },
+               {
+            type: "input",
+            message: "What is the employee's last name?",
+            name: "lastName"
+               },
+               {
+            type: "list",
+            message: "What is the employee's role?",
+            choices: ["software engineer",
+                    "lead engineer",
+                    "accounting manager",
+                    "accountant",
+                    "sales manager",
+                    "salesperson",
+                    "general counsel",
+                    "associate attorney",
+                    "human resources"
+                    ],
+            name: "addRole"
+               },
+               {
+            type: "input",
+            message: "What is the employee's manager id?",
+            name: "addMgrId"      
+            }
+        ])
+}
