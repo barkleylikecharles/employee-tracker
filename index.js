@@ -1,11 +1,14 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
+// const express = require('express');
+// const PORT = process.env.PORT || 3002;
+// const app = express();
 
 // Connection to employee_db Database
 const connection = mysql.createConnection ({
     host: 'localhost',
-    // port: 3000,
+    // port: 3002,
     user: 'root',
     password: '',
     database: "employee_DB"
@@ -56,7 +59,7 @@ function mainMenu() {
 
 //See all employees in database
 function viewEmployees() {
-    var query = 'SELECT * FROM employee';
+    var query = `SELECT * FROM employee`;
     connection.query(query, function(err, res) {
         if (err) throw err;
         console.log(res.length + ' employees available to view.');
@@ -66,7 +69,7 @@ function viewEmployees() {
 };
 //All departments in database
 function viewDepartment() {
-    var query = 'SELECT * FROM department';
+    var query = `SELECT * FROM department`;
     connection.query(query, function(err, res) {
         if (err) throw err;
         console.table('All Departments:', res);
@@ -75,7 +78,7 @@ function viewDepartment() {
 };
 //All roles in database
 function viewRoles() {
-    var query = 'SELECT * FROM role';
+    var query = `SELECT * FROM role`;
     connection.query(query, function(err, res) {
         if (err) throw err;
         console.table('All Roles:', res);
@@ -114,7 +117,14 @@ function addEmployee() {
                {
             type: "input",
             message: "What is the employee's manager id?",
-            name: "addMgrId"      
+            name: "addMgr"      
             }
         ])
+        .then(function (res) {
+            const firstName = res.firstName;
+            const lastName = res.lastName;
+            const addRoleId = res.addRole;
+            const addMgrId = res.addMgr; 
+            const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)`
+        })
 }
