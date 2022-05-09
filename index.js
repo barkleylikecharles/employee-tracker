@@ -36,16 +36,45 @@ function mainMenu() {
         }).then(function (answer){
             switch (answer.menuStart) {
                 case 'View All Employees':
-                viewEmployees();
+                    viewEmployees();
+                    break;
+            
+                case "View All Departments":
+                    viewDepartment();
+                    break;
+                
+                case "View All Roles":
+                    viewRoles();
+                    break;
             }
         })
 };
+
 
 function viewEmployees() {
     var query = 'SELECT * FROM employee';
     connection.query(query, function(err, res) {
         if (err) throw err;
-        console.log(employee.length + 'employees available to view.');
+        console.log(res.length + ' employees available to view.');
+        console.table('All Employees:', res);
         mainMenu();
     })
-}
+};
+
+function viewDepartment() {
+    var query = 'SELECT * FROM department';
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+        console.table('All Departments:', res);
+        mainMenu();
+    })
+};
+
+function viewRoles() {
+    var query = 'SELECT * FROM role';
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+        console.table('All Roles:', res);
+        mainMenu();
+    })
+};
