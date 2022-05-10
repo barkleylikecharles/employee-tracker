@@ -92,7 +92,7 @@ function viewRoles() {
         mainMenu();
     })
 };
-
+// Add an employee to the database
 function addEmployee() {
     inquirer
         .prompt([
@@ -143,7 +143,7 @@ function addEmployee() {
                 });
             });
 }
-
+// Add a department to the database
 function addDepartment() {
     var query = `SELECT * FROM department`;
     connection.query (query, function (err, res) {
@@ -166,6 +166,7 @@ function addDepartment() {
         });
     });
     }
+// Add a role to the database
 function addRole() {
     var query = `SELECT * FROM role`;
     connection.query (query, function (err, res) {
@@ -181,7 +182,18 @@ function addRole() {
             type: "input",
             message: "What role are you adding?",
             name: "newRole",   
-            }
+            },
+          {
+              name: "dept",
+              type: "list",
+              message: "In what department would you like to add this role?",
+              choices: ""
+          },
+          {
+            name: "salary",
+            type: "number",
+            message: "Enter the role's salary:"
+          },
         ]).then(function (answer) {
             connection.query(`INSERT INTO role(title) VALUES ( ? )`, answer.newRole)
             mainMenu();
