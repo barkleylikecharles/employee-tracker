@@ -1,6 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
+const { query } = require('express');
 // const express = require('express');
 // const PORT = process.env.PORT || 3002;
 // const app = express();
@@ -52,6 +53,9 @@ function mainMenu() {
 
                 case "Add Employee":
                     addEmployee();
+                    break;
+                case "Add Department":
+                    addDepartment();
                     break;
             }
         })
@@ -138,13 +142,13 @@ function addEmployee() {
 }
 
 function addDepartment() {
-    query = `SELECT department_name AS "Departments" FROM department`;
+    var query = `SELECT * FROM department`;
     connection.query (query, function (err, res) {
         if (err) {
             throw err;
         }
         console.log('');
-        console.table('Current Departments', results);
+        console.table('Current Departments', query);
 
     inquirer    
         .prompt ([
@@ -156,6 +160,6 @@ function addDepartment() {
         ]).then(function (answer) {
             connection.query(`INSERT INTO department(department_name) VALUES ( ? )`, answer.newDept)
             mainMenu();
-        })
-    })
+        });
+    });
     }
