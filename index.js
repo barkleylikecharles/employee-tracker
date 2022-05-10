@@ -57,6 +57,9 @@ function mainMenu() {
                 case "Add Department":
                     addDepartment();
                     break;
+                case "Add Role":
+                    addRole();
+                    break;
             }
         })
 };
@@ -159,6 +162,28 @@ function addDepartment() {
            }
         ]).then(function (answer) {
             connection.query(`INSERT INTO department(department_name) VALUES ( ? )`, answer.newDept)
+            mainMenu();
+        });
+    });
+    }
+function addRole() {
+    var query = `SELECT * FROM role`;
+    connection.query (query, function (err, res) {
+        if (err) {
+            throw err;
+        }
+        console.log('');
+        console.table('Current Roles', query);
+
+    inquirer    
+        .prompt ([
+            { 
+            type: "input",
+            message: "What role are you adding?",
+            name: "newRole",   
+            }
+        ]).then(function (answer) {
+            connection.query(`INSERT INTO role(title) VALUES ( ? )`, answer.newRole)
             mainMenu();
         });
     });
