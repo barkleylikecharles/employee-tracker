@@ -91,9 +91,23 @@ function viewRoles() {
         console.table('All Roles:', answer);
         mainMenu();
     })
-};
+}
 // Add an employee to the database
 function addEmployee() {
+    var query = `SELECT * FROM role`;
+    connection.query (query, function (err, res) {
+        if (err) {
+            throw err;
+        }
+        console.log(res)
+        var choices = res.map((role)=> {
+            return {
+                name: role.title,
+                value: role.id
+            }
+    
+        })
+  
     inquirer
         .prompt([
             {
@@ -109,17 +123,9 @@ function addEmployee() {
                {
             type: "list",
             message: "What is the employee's role?",
-            choices: ["software engineer",
-                    "lead engineer",
-                    "accounting manager",
-                    "accountant",
-                    "sales manager",
-                    "salesperson",
-                    "general counsel",
-                    "associate attorney",
-                    "human resources"
-                    ],
-            name: "addRole"
+            choices: choices, 
+            name: "addRole",
+            pageSize: 100
                },
                {
             type: "input",
@@ -142,7 +148,9 @@ function addEmployee() {
                 mainMenu();
                 });
             });
+        })
 }
+
 // Add a department to the database
 function addDepartment() {
     var query = `SELECT * FROM department`;
@@ -168,13 +176,23 @@ function addDepartment() {
     }
 // Add a role to the database
 function addRole() {
-    var query = `SELECT * FROM role`;
+    var query = `SELECT * FROM department`;
+    // var query = `SELECT * FROM role`;
     connection.query (query, function (err, res) {
         if (err) {
             throw err;
         }
-        console.log('');
+        console.log(res);
         console.table('Current Roles', query);
+
+    var choices = res.map((department)=> {
+        return {
+            name: department.department_name,
+            value: department.id
+        }
+
+    })
+    console.log(choices)
 
     inquirer    
         .prompt ([
@@ -187,7 +205,13 @@ function addRole() {
               name: "dept",
               type: "list",
               message: "In what department would you like to add this role?",
-              choices: ""
+              choices: res.map((department)=> {
+                return {
+                    name: department.department_name,
+                    value: department.id
+                }
+        
+            })
           },
           {
             name: "salary",
@@ -195,7 +219,9 @@ function addRole() {
             message: "Enter the role's salary:"
           },
         ]).then(function (answer) {
-            connection.query(`INSERT INTO role(title) VALUES ( ? )`, answer.newRole)
+            connection.query(`INSERT INTO role(title, salary, dept_id) VALUES (?, ?, ?)`, 
+            [answer.newRole, answer.salary, answer.dept])
+
             mainMenu();
         });
     });
