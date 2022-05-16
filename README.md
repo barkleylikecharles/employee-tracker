@@ -1,18 +1,18 @@
-# employee-tracker
+# Employee Tracker
 
 ## Badges
 ![NPM](https://img.shields.io/badge/npm-CB3837?style=plastic&logo=npm&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node-6DA55F?style=plastic&logo=node.js&logoColor=white)
 
-## Languages Used
-
 ## Description
+Welcome to my Employee Tracker.  This application is ideal for a small business owners to keep track of their employee roster, salary data, and department information.  View all current employees and their respective information in one place. Adding new employees, roles, and departments is a user friendly and streamline process.  
 
 ## Installation 
-User must clone the repo at
-and then do a npm init in their terminal to intiate all packages.
+User may clone the repo here https://github.com/barkleylikecharles/employee-tracker
 
-npm start to begin
+Next step is to run an npm init in their terminal to intiate all packages.
+
+npm start to begin prompts
 
 ## License
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
