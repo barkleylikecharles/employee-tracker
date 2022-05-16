@@ -8,11 +8,19 @@
 Welcome to my Employee Tracker.  This application is ideal for a small business owners to keep track of their employee roster, salary data, and department information.  View all current employees and their respective information in one place. Adding new employees, roles, and departments is a user friendly and streamline process.  
 
 ## Installation 
+Clone the repository to your local development environment. 
+
 User may clone the repo here https://github.com/barkleylikecharles/employee-tracker
 
-Next step is to run an npm init in their terminal to intiate all packages.
+Next step is to run an npm init in their terminal to install all dependencies.
 
+## Usage
 npm start to begin prompts
+
+View a video tutorial here https://youtu.be/nzsAs3trVR0
+
+## Credits
+Project Completed by Nicole Barkley https://github.com/barkleylikecharles 
 
 ## License
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
