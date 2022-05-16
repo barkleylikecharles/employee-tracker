@@ -20,7 +20,7 @@ VALUES ("software engineer", 110000, 4),
 
 SELECT * FROM role;
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, dept_id)
 VALUES ("Verona", "Nelson", 4, 2),
      ("Bryan", "Daines", 7, NULL),
      ("Nancy", "Birdd", 1, 4),

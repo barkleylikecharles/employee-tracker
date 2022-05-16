@@ -130,16 +130,16 @@ function addEmployee() {
                {
             type: "input",
             message: "What is the employee's manager id?",
-            name: "addMgr"      
+            name: "addDept"      
             }
         ])
         .then(function (answer) {
             const firstName = answer.firstName;
             const lastName = answer.lastName;
             const addRoleId = answer.addRole;
-            const addMgrId = answer.addMgr; 
-            const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)  
-                VALUES ("${firstName}, ${lastName}, ${addRoleId}, ${addMgrId}")`;
+            const addDeptId = answer.addDept; 
+            const query = `INSERT INTO employee (first_name, last_name, role_id, dept_id)  
+                VALUES ("${firstName}, ${lastName}, ${addRoleId}, ${addDeptId}")`;
             connection.query(query, function (err, res) {
                 if (err) {
                     throw err;
